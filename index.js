@@ -1,10 +1,17 @@
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const express = require('express');
 const { request } = require('undici');
-const config = require('./config.json');
 
 const app = express();
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+const config = {
+    TOKEN: process.env.DISCORD_TOKEN,
+    CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    REDIRECT_URI: process.env.DISCORD_REDIRECT_URI,
+    PORT: process.env.PORT || 3000
+};
 
 const commands = [
     new SlashCommandBuilder()
